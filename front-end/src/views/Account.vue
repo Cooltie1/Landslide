@@ -49,44 +49,5 @@ export default {
 </script>
 
 <style scoped>
-.space-above {
-    margin-top: 50px;
-}
 
-h1 {
-    font-size: 28px;
-    font-variant: capitalize;
-}
-
-.hero {
-    padding: 120px;
-    display: flex;
-    justify-content: center;
-}
-
-.heroBox {
-    text-align: center;
-}
-
-.hero form {
-    font-size: 14px;
-}
-
-.hero form legend {
-    font-size: 20px;
-}
-
-input {
-    margin-right: 10px;
-}
-
-.error {
-    margin-top: 10px;
-    display: inline;
-    padding: 5px 20px;
-    border-radius: 30px;
-    font-size: 10px;
-    background-color: #d9534f;
-    color: #fff;
-}
 </style>

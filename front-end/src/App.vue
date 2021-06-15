@@ -6,10 +6,10 @@
                   <router-link to="/" class="nav-link" >Home</router-link>
               </div>
               <div class="nav-item">
-                  <router-link to="/Buy" class="nav-link">Buy</router-link>
+                  <router-link to="/buy" class="nav-link">Buy</router-link>
               </div>
               <div class="nav-item">
-                  <router-link to="/Sell" class="nav-link">Sell</router-link>
+                  <router-link to="/sell" class="nav-link">Sell</router-link>
               </div>
               <div class="nav-item-login">
                   <router-link to="/account" class="nav-link nav-login" v-if="user">Account</router-link>
@@ -73,7 +73,6 @@ body {
 }
 #nav {
     height: 40px;
-    border-bottom: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
