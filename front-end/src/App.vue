@@ -3,7 +3,7 @@
       <div id="wrapper">
           <div id="nav">
               <div class="nav-item">
-                  <router-link to="/" class="nav-link">Home</router-link>
+                  <router-link to="/" class="nav-link" >Home</router-link>
               </div>
               <div class="nav-item">
                   <router-link to="/Buy" class="nav-link">Buy</router-link>
@@ -12,7 +12,8 @@
                   <router-link to="/Sell" class="nav-link">Sell</router-link>
               </div>
               <div class="nav-item-login">
-                  <router-link to="/Login" class="nav-link nav-login">Login</router-link>
+                  <router-link to="/account" class="nav-link nav-login" v-if="user">Account</router-link>
+                  <router-link to="/account" class="nav-link nav-login" v-else>Login</router-link>
               </div>
           </div>
           <div class="page-content">
@@ -25,6 +26,28 @@
       </div>
   </div>
 </template>
+
+
+<script>
+import axios from 'axios';
+export default {
+
+    async created() {
+        try {
+            let response = await axios.get('/api/users');
+            this.$root.$data.user = response.data.user;
+        } catch (error) {
+            this.$root.$data.user = null;
+        }
+    },
+   computed: {
+       user() {
+           return this.$root.$data.user;
+       }
+   }
+}
+
+</script>
 
 <style>
    /* Color Scheme */
