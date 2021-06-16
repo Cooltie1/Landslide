@@ -25,6 +25,7 @@ const propertySchema = new mongoose.Schema({
   address: String,
   price: String,
   contact: String,
+  size: String,
   created: {
     type: Date,
     default: Date.now
@@ -48,7 +49,8 @@ router.post("/", validUser, upload.single('photo'), async (req, res) => {
     description: req.body.description,
     address: req.body.address,
     price: req.body.price,
-    contact: req.body.contact
+    contact: req.body.contact,
+    size: req.body.size
   });
   try {
     await property.save();
@@ -63,7 +65,7 @@ router.post("/", validUser, upload.single('photo'), async (req, res) => {
 router.get("/", validUser, async (req, res) => {
   // return properties
   try {
-    let prperties = await Property.find({
+    let properties = await Property.find({
       user: req.user
     }).sort({
       created: -1
@@ -73,6 +75,44 @@ router.get("/", validUser, async (req, res) => {
     console.log(error);
     return res.sendStatus(500);
   }
+});
+
+
+router.get("/all", async (req, res) => {
+    try {
+        let properties = await Property.find().sort({
+            created: -1
+        }).populate('user');
+        return res.send(properties);
+    } catch(error) {
+        console.log(error);
+        return res.sendStatus(500);
+    }
+});
+
+router.get("/:id", async (req, res) => {
+    try {
+        let property = await Property.findOne({
+            _id: req.params.id
+        }).populate('user');
+        return res.send(property);
+    } catch(error) {
+        console.log(error);
+        return res.sendstatus(500);
+    }
+});
+
+router.delete("/:id", validUser, async (req, res) => {
+    try {
+        await Property.deleteOne({
+            _id: req.params.id
+        });
+
+        res.sendStatus(200);
+    } catch(error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
 });
 
 module.exports = {

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Buy from '../views/Buy.vue'
 import Sell from '../views/Sell.vue'
 import Account from '../views/Account.vue'
+import Property from '../views/Property.vue'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,12 @@ const routes = [
     name: 'Account',
     component: Account
   },
+  {
+      path: '/property/:id',
+      name: 'property',
+      component: Property
+  }
+  
 ]
 
 const router = new VueRouter({

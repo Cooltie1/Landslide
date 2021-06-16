@@ -61,6 +61,19 @@ body {
     margin: 10px 40px 40px 40px;
 
 }
+.color1 {
+    color: #2f5d62;
+}
+.color2 {
+    color: #5e8b7e;
+}
+.color3 {
+    color: #a7c4bc;
+}
+.color4 {
+    color: #dfeeea;
+}
+
 #wrapper {
     min-height: 100%;
     display: flex;

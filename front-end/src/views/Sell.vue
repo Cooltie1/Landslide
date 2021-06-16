@@ -14,6 +14,9 @@
                     <input v-model="price" placeholder="Price">
                 </fieldset>
                 <fieldset>
+                    <input v-model="size" placeholder="Lot Size">
+                </fieldset>
+                <fieldset>
                     <input v-model="contact" placeholder="Contact Information">
                 </fieldset>
                 <fieldset>
@@ -58,7 +61,8 @@ export default {
             error: '',
             price: '',
             address: '',
-            contact: ''
+            contact: '',
+            size: ''
         }
     },
     async created() {
@@ -94,6 +98,7 @@ export default {
     formData.append('price', this.price);
     formData.append('address', this.address);
     formData.append('contact', this.contact);
+    formData.append('size', this.size);
     await axios.post("/api/properties", formData);
     this.file = null;
     this.url = "";
@@ -102,6 +107,7 @@ export default {
     this.address = "";
     this.contact = "";
     this.price = "";
+    this.size = "";
     this.$emit('uploadFinished');
   } catch (error) {
     this.error = "Error: " + error.response.data.message;
