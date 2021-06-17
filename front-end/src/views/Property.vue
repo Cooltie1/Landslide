@@ -15,6 +15,9 @@
     </div>
     <div class="description">
         <p>{{this.property.description}}</p>
+        <router-link to="/account" class=""><button @click="deleteProperty">Delete</button></router-link>
+        <router-link :to="{name: 'edit', params: {id: this.property._id}}" class=""><button>Edit</button></router-link>
+
     </div>
 
 </div>
@@ -63,6 +66,14 @@ methods: {
       return moment(date).fromNow();
     else
       return moment(date).format('d MMMM YYYY');
+  },
+  async deleteProperty() {
+      try {
+          await axios.delete('/api/properties/' + this.property._id);
+
+      } catch(error) {
+          console.log(error);
+      }
   }
 }
 

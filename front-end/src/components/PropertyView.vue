@@ -15,7 +15,6 @@
                         <h3>{{formatDate(property.created)}}</h3>
                     </div>
                 </router-link>
-                <button @click="deleteProperty(property)">Delete</button>
             </div>
 
 
@@ -28,7 +27,7 @@
 
 <script>
 import moment from 'moment';
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   name: 'PropertyView',
   props: {
@@ -41,14 +40,6 @@ export default {
       else
         return moment(date).format('d MMMM YYYY');
     },
-    async deleteProperty(property) {
-        try {
-            await axios.delete('/api/properties/' + property._id);
-            console.log(property);
-        } catch(error) {
-            console.log(error);
-        }
-    }
   }
 }
 </script>
