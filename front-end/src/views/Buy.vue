@@ -1,5 +1,6 @@
 <template>
-<div>
+<div class="">
+    <h1>Land For Sale</h1>
     <property-view :properties="properties" />
 
 </div>

@@ -15,8 +15,8 @@
     </div>
     <div class="description">
         <p>{{this.property.description}}</p>
-        <router-link to="/account" v-if="owner" class=""><button @click="deleteProperty">Delete</button></router-link>
-        <router-link :to="{name: 'edit', params: {id: this.property._id}}" v-if="owner" class=""><button>Edit</button></router-link>
+        <router-link to="/account" v-if="owner" class=""><button @click="deleteProperty" class="pure-button pure-button-primary btn-delete">Delete</button></router-link>
+        <router-link :to="{name: 'edit', params: {id: this.property._id}}" v-if="owner" class=""><button class="pure-button pure-button-primary btn-edit">Edit</button></router-link>
 
     </div>
 
@@ -109,6 +109,20 @@ methods: {
 .description {
     border-top: 2px solid #2f5d62;
     width: 65%;
+}
+.btn-delete {
+    margin: 5px;
+    width: 80px;
+    background: ;
+    font-size: 1.2em;
+    background: #f75959
+}
+
+.btn-edit {
+    margin: 5px;
+    width: 80px;
+    font-size: 1.2em;
+    background: #595cf7;
 }
 
 

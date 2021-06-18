@@ -21,7 +21,10 @@
           </div>
 
 
-          <footer class="page-footer"></footer>
+          <footer class="page-footer">
+              <h3 class="time">16 Hours</h3>
+              <a href="https://github.com/Cooltie1/Landslide.git" class="pure-button github-btn">Github</a>
+          </footer>
 
       </div>
   </div>
@@ -74,16 +77,37 @@ body {
     color: #dfeeea;
 }
 
+
 #wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
 }
 .page-footer {
-    height: 100px;
+
     background-color: #dfeeea;
     flex-shrink: 0;
+    padding: 10px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
+.time {
+    margin: 10px;
+    font-size: 1.2em;
+
+}
+.github-btn {
+    margin: 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 #nav {
     height: 40px;
     display: flex;
@@ -94,6 +118,8 @@ body {
 }
 .page-content {
     flex-grow: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .nav-item {

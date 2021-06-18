@@ -2,7 +2,7 @@
 <div>
     <div class="sub-header">
         <h1>Hi, {{user.firstName}}</h1>
-        <button @click="logout">Logout</button>
+        <button class="pure-button pure-button-primary" @click="logout">Logout</button>
     </div>
 
     <h2>My Properties</h2>
