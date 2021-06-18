@@ -15,8 +15,8 @@
     </div>
     <div class="description">
         <p>{{this.property.description}}</p>
-        <router-link to="/account" class=""><button @click="deleteProperty">Delete</button></router-link>
-        <router-link :to="{name: 'edit', params: {id: this.property._id}}" class=""><button>Edit</button></router-link>
+        <router-link to="/account" v-if="owner" class=""><button @click="deleteProperty">Delete</button></router-link>
+        <router-link :to="{name: 'edit', params: {id: this.property._id}}" v-if="owner" class=""><button>Edit</button></router-link>
 
     </div>
 
@@ -33,30 +33,37 @@ export default {
   return {
       property: String,
       error: '',
-
   }
 },
 async created() {
-    this.getProperty();
+
+
+
     try {
+        await this.getProperty();
       let response = await axios.get('/api/users');
       this.$root.$data.user = response.data.user;
-      console.log("logged in");
     } catch (error) {
       this.$root.$data.user = null;
-      console.log("Not logged in");
     }
+
 },
 computed: {
-  user() {
-    return this.$root.$data.user;
-  }
+    owner() {
+        if (this.property.user._id === this.$root.$data.user._id) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 },
 methods: {
   async getProperty() {
     try {
       let response = await axios.get("/api/properties/" + this.$route.params.id);
       this.property = response.data;
+
     } catch (error) {
       this.error = error.response.data.message;
     }
@@ -74,7 +81,8 @@ methods: {
       } catch(error) {
           console.log(error);
       }
-  }
+  },
+
 }
 
 
